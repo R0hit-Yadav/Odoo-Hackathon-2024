@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Grooming Form</title>
+    <style>
+        body {
+            background: linear-gradient(45deg, #4FC174, #0B6623);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 0;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .form-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            width: 100%;
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .form-group 
+        {
+            margin-bottom: 15px;
+        }
+        .form-group label 
+        {
+            display: block;
+            margin-bottom: 5px;
+            margin-right: 6px;
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-group textarea {
+            resize: vertical;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #0B6623;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background-color: #0B6623;
+        }
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .checkbox-group label {
+            margin-right: 15px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Pet Grooming Form</h2>
+        <form id="groomingForm">
+            <div class="form-group">
+                <label for="petName">Pet Name</label>
+                <input type="text" id="petName" placeholder="Enter your pet's name">
+            </div>
+            <div class="form-group">
+                <label for="breed">Breed</label>
+                <input type="text" id="breed" placeholder="Enter your pet's breed">
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" placeholder="Enter your pet's age">
+            </div>
+            <div class="form-group">
+                <label>Select Grooming Types</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="groomingType" value="Bath and Brush" data-price="30">Bath and Brush ($30)</label><br>
+                    <label><input type="checkbox" name="groomingType" value="Haircut" data-price="50"> Haircut ($50)</label><br>
+                    <label><input type="checkbox" name="groomingType" value="Nail Trim" data-price="20"> Nail Trim ($20)</label><br>
+                    <label><input type="checkbox" name="groomingType" value="Ear Cleaning" data-price="15"> Ear Cleaning ($15)</label><br>
+                    <label><input type="checkbox" name="groomingType" value="Teeth Brushing" data-price="10"> Teeth Brushing ($10)</label><br>
+                    <label><input type="checkbox" name="groomingType" value="Full Groom" data-price="80"> Full Groom ($80)</label><br>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="meal">Meal</label>
+                <input type="text" id="meal" placeholder="Enter your pet's meal preferences">
+            </div>
+            <div class="form-group">
+                <label for="detailsUpload">Upload Pet Details</label>
+                <input type="file" id="detailsUpload">
+            </div>
+            <div class="form-group">
+                <label for="specialRequirements">Special Requirements</label>
+                <textarea id="specialRequirements" rows="3" placeholder="Enter any special requirements for your pet"></textarea>
+            </div>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('groomingForm');
+            const checkboxes = form.querySelectorAll('input[type="checkbox"][name="groomingType"]');
+            
+            checkboxes.forEach(function(checkbox) {
+                checkbox.addEventListener('change', function() {
+                    updateTotal();
+                });
+            });
+
+            function updateTotal() {
+                let totalPrice = 0;
+                checkboxes.forEach(function(checkbox) {
+                    if (checkbox.checked) {
+                        totalPrice += parseFloat(checkbox.getAttribute('data-price'));
+                    }
+                });
+
+                console.log('Total Price: $' + totalPrice.toFixed(2)); // You can modify this to display or use the total price as needed
+            }
+        });
+    </script>
+</body>
+</html>

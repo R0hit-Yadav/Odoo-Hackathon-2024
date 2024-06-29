@@ -1,0 +1,201 @@
+/* Reset CSS */
+*,
+*:before,
+*:after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styles */
+.main-form {
+    font-family: 'Poppins', sans-serif;
+    background-image: url('../img/dogie.jpg');
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Form Styles */
+form {
+    max-width: 90%;
+    /* Adjust as needed */
+    /* width: 400px; */
+    /* Set a fixed width for larger screens */
+    background-color: rgba(32, 2, 2, 0.13);
+    border-radius: 10px;
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(15, 1, 1, 0.1);
+    /* box-shadow: 0 0 50px rgb(126, 169, 255); */
+    box-shadow: 0 0 50px rgb(223, 223, 111);
+    padding: 5% 3%;
+    /* Adjust padding as needed */
+    text-align: center;
+}
+
+/* Form Element Styles */
+form * {
+    color: beige;
+    outline: none;
+}
+
+form h3 {
+    color: beige;
+    font-size: 2em;
+    /* Responsive font size */
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+label {
+    color: beige;
+    display: block;
+    margin-top: 2vh;
+    /* Responsive margin */
+    font-size: 1.2em;
+    /* Responsive font size */
+    font-weight: 500;
+    visibility: hidden;
+}
+
+#noAcct {
+    visibility: visible;
+}
+
+#noAcct a {
+    color: rgb(224, 224, 158);
+}
+
+input {
+    height: 6vh;
+    /* Responsive height */
+    width: 100%;
+    background-color: transparent;
+    border-radius: 25px;
+    padding: 0 20px;
+    margin-top: 1vh;
+    /* Responsive margin */
+    font-size: 1em;
+    /* Responsive font size */
+    font-weight: 500;
+    border: 1px solid black;
+    /* box-shadow: 0 0 3px rgb(126, 169, 255); */
+    box-shadow: 0 0 3px beige;
+}
+
+#password-container {
+    position: relative;
+}
+
+#eye-img {
+    width: 25px;
+    border-radius: 50%;
+}
+
+#eye-button {
+    position: absolute;
+    background: transparent;
+    padding: 0;
+    width: fit-content;
+    height: max-content;
+    transform: translate(-150%, -56%);
+    border-radius: 100%;
+    border: none;
+    padding-top: 2.9%;
+}
+
+::placeholder {
+    color: #e5e5e5;
+}
+
+button {
+    margin-top: 4vh;
+    /* Responsive margin */
+    width: 50%;
+    background-color: rgba(255, 255, 255, 0.7);
+    color: #080710;
+    padding: 1.5vh 0;
+    /* Responsive padding */
+    font-size: 1em;
+    /* Responsive font size */
+    font-weight: 600;
+    border-radius: 20vh;
+    cursor: pointer;
+    border: 1px solid black;
+    margin-bottom: 2vh;
+    transition-delay: 0.1s;
+    transition-duration: 0.3s;
+}
+
+button:hover {
+    background-color: rgba(0, 73, 83, 0.7);
+    color: #ffffff;
+    border: 2px solid white;
+}
+
+.footer-last-text {
+    background-color: #E3E6F3;
+    padding: 20px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+
+/* Media Queries for Responsiveness */
+@media screen and (max-width: 768px) {
+    form {
+        width: 55%;
+        /* Adjust width for smaller screens */
+    }
+
+    form h3 {
+        font-size: 1.5em;
+        /* Adjust font size */
+    }
+
+    label {
+        font-size: 1em;
+        /* Adjust font size */
+    }
+
+    input {
+        height: 40px;
+        /* Adjust height */
+        font-size: 0.9em;
+        /* Adjust font size */
+    }
+
+    button {
+        margin-top: 4vh;
+        /* Adjust margin */
+        font-size: 1em;
+        /* Adjust font size */
+    }
+}
+
+img {
+    height: 2em;
+    margin-top: 10%;
+    margin-left: 10%;
+}
+
+a {
+    text-decoration: none;
+    color: lightblue;
+}
+
+.githubl>img {
+    height: 2.3em;
+}
+
+img:hover {
+    height: 2.5em;
+    width: 2.5em;
+}

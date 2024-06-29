@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Pet Party Registration</title>
+    
+    <!-- Link To CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <section class="main-form">
+        <form class="background-form">
+            <h3>Pet Party Registration</h3>
+
+            <label for="username">Username</label>
+            <input type="text" placeholder="Name" id="username">
+
+            <label for="phoneNumber">Phone Number</label>
+            <input type="text" placeholder="Phone Number" id="phoneNumber">
+
+            <label for="No-of-Dogs">Number of Pets</label>
+            <input type="number" placeholder="Number of Dogs" id="No-of-Dogs">
+
+            <button type="submit" onclick="validation(event)">Register</button>
+        </form>
+    </section>
+    
+    <script>
+        function validation(event) {
+            const usernameInput = document.getElementById('username');
+            const phoneNumberInput = document.getElementById('phoneNumber');
+            const noOfDogsInput = document.getElementById('No-of-Dogs');
+
+            let isValid = true;
+            let errorMessage = '';
+
+            if (usernameInput.value === '') {
+                errorMessage += 'Please enter a username. ';
+                isValid = false;
+            }
+
+            if (phoneNumberInput.value === '') {
+                errorMessage += 'Please enter your phone number. ';
+                isValid = false;
+            } else if (isNaN(phoneNumberInput.value)) {
+                errorMessage += 'Phone number must contain only digits. ';
+                isValid = false;
+            }
+
+            if (noOfDogsInput.value === '') {
+                errorMessage += 'Please enter the number of dogs attending. ';
+                isValid = false;
+            } else if (noOfDogsInput.value < 0 || isNaN(noOfDogsInput.value)) {
+                errorMessage += 'Number of dogs must be a non-negative number. ';
+                isValid = false;
+            }
+
+            if (!isValid) {
+                event.preventDefault();
+                alert(errorMessage);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignIn</title>
+</head>
+<body>
+
+    {% for messages in messages %}
+        <div class="alert alert-{{ messages.tags }} alert-dismissable fade show" role='alert'>
+            <strong> Message: </strong>{{ messages }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endfor %}
+
+    <h1>SignIn</h1>
+    <form action="/signin" method="post">
+        {% csrf_token %}
+        <label for='username'>Username: </label>
+        <input type='text' id='username' name='username' placeholder="Enter your username" required><br>
+
+
+        <label for='pass1'>Password: </label>
+        <input type='password' id='pass1' name='pass1' placeholder="Enter password" required><br>
+
+        <button type="submit"> Sign In</button>
+    </form>
+</body>
+</html>

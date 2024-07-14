@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Books</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1 {
+            color: #4a90e2;
+            text-align: center;
+        }
+
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        form button {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #357ab8;
+        }
+
+        h2 {
+            color: #4a90e2;
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background: #fff;
+            margin: 10px 0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        li strong {
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        li img {
+            float: right;
+            margin-left: 10px;
+            border-radius: 4px;
+        }
+
+        li form {
+            margin-top: 10px;
+            text-align: right;
+        }
+
+        li form label {
+            margin-right: 10px;
+        }
+
+        li form input[type="number"] {
+            width: 60px;
+            padding: 5px;
+            margin-right: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        li form button {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        li form button:hover {
+            background-color: #357ab8;
+        }
+
+        p {
+            text-align: center;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <h1>Search for Books</h1>
+    <form method="get" action="{% url 'search_books' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Search</button>
+    </form>
+
+    {% if books %}
+        <h2>Results:</h2>
+        <ul>
+            {% for book in books %}
+                <li>
+                    <strong>{{ book.volumeInfo.title }}</strong><br>
+                    Author: {{ book.volumeInfo.authors|join:", " }}<br>
+                    Publisher: {{ book.volumeInfo.publisher }}<br>
+                    Year: {{ book.volumeInfo.publishedDate|slice:":4" }}<br>
+                    ISBN: {{ book.volumeInfo.industryIdentifiers.0.identifier }}<br>
+                    Rating: {{ book.volumeInfo.averageRating }}<br>
+                    <img src="{{ book.volumeInfo.imageLinks.thumbnail }}" alt="Thumbnail" style="width:100px;"><br>
+                    Description: {{ book.volumeInfo.description|slice:":100" }}<br>
+                    <form method="post" action="{% url 'add_to_store' %}" onsubmit="return showAlert()">
+                        {% csrf_token %}
+                        <input type="hidden" name="book_id" value="{{ book.id }}">
+                        <input type="hidden" name="title" value="{{ book.volumeInfo.title }}">
+                        <input type="hidden" name="author" value="{{ book.volumeInfo.authors|join:", " }}">
+                        <input type="hidden" name="publisher" value="{{ book.volumeInfo.publisher }}">
+                        <input type="hidden" name="year" value="{{ book.volumeInfo.publishedDate|slice:":4" }}">
+                        <input type="hidden" name="isbn" value="{{ book.volumeInfo.industryIdentifiers.0.identifier }}">
+                        <input type="hidden" name="rating" value="{{ book.volumeInfo.averageRating }}">
+                        <input type="hidden" name="thumbnail" value="{{ book.volumeInfo.imageLinks.thumbnail }}">
+                        <input type="hidden" name="description" value="{{ book.volumeInfo.description }}">
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" name="quantity" min="1" required>
+                        <button type="submit">Add to Store</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No books found.</p>
+    {% endif %}
+
+    <script>
+        function showAlert() {
+            alert("Book added successfully!");
+            return true;  // Allows form submission to proceed
+        }
+    </script>
+</body>
+</html>

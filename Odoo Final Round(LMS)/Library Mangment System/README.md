@@ -21,7 +21,7 @@
 
 ### Demo Screeshots
 
-![Bookish Desktop Demo](./readme-images/desktop.png "Desktop Demo")
+![Bookish Desktop Demo](./readme%20images/home.png "Desktop Demo")
 
 ### Prerequisites
 

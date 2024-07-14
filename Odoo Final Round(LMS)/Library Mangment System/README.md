@@ -6,7 +6,7 @@
 
   <h2 align="center">BookHub</h2>
 
-  Boohub is a fully responsive website, <br />Responsive for all devices, build using HTML, CSS, and JavaScript.
+  Bookhub is a fully responsive website, <br />Responsive for all devices, build using HTML, CSS, and JavaScript.
 
 </div>
 

@@ -1,4 +1,0 @@
-User : Password
-
-Librarian : books1234
-Parth(main admin) : test91104

@@ -5,7 +5,7 @@
   <br />
   <br />
 
-  <h2 align="center">BookHub/h2>
+  <h2 align="center">BookHub</h2>
 
   <br />Responsive for all devices, build using HTML, CSS, and JavaScript.
 

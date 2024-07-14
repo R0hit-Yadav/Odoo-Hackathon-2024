@@ -7,7 +7,7 @@
 
   <h2 align="center">BookHub/h2>
 
-  Bookish is a fully responsive e-book website, <br />Responsive for all devices, build using HTML, CSS, and JavaScript.
+  <br />Responsive for all devices, build using HTML, CSS, and JavaScript.
 
 
 
